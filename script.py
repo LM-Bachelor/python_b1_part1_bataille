@@ -1,85 +1,131 @@
-import random
-# Définir la liste lst_cards contenant la liste des cartes d'un jeu de 54 cartes
-# A l'aide de caractère ASCII (cf. table des caractères ASCII jointes), déclarez une liste "lst_colors" contenant les couleurs d'un jeu de cartes
-# - Carreau / Coeur / Trèfle / Pique
+# EXERCICE 1 : 1. A l’aide de la table des caractères ASCII fournie en annexe, déclarer une liste « lst_colors »
+# et stockez les 4 couleurs (carreau, cœur, trèfle, pique) d’un jeu de cartes sous la forme d’un caractère
 lst_colors = [chr(3), chr(4), chr(5), chr(6)]
-# Résultat attendu : ['\x03', '\x04', '\x05', '\x06']
-# Déclarez une liste "lst_signs" contenant la liste des types de cartes que peut contenir un jeu de cartes: 
-lst_signs = ["As", "Roi", "Dame", "Valet"] + list(range(2,11))
+# print("lst_colors : ", lst_colors)
+
+# EXERCICE 1 : 2. Déclarez une liste « lst_values » et stockez dans celle-ci la liste des valeurs d’un jeu de cartes.
+# Pour générer les valeurs allant de 2 à 10 vous utiliserez les méthodes list() et range().
+lst_values = ["As", "Roi", "Dame", "Valet"] + list(range(2,11))
+# print("lst_values : ", lst_values)
+
+# EXERCICE 1 : 3. Déclarez une liste « lst_cards » et, à l’aide de 2 boucles,
+# remplissez cette liste avec les 52 cartes qui constituent un jeu de cartes
+# en utilisant les 2 listes déclarées ci-dessus (« lst_colors » et « lst_values »)
 lst_cards = []
 for color in lst_colors:
-    for sign in lst_signs:
+    for sign in lst_values:
         lst_cards.append(str(sign)+color)
+# print("lst_cards : ", lst_cards)
+
+
+# EXERCICE 1 : 4. A l’aide de la bibliothèque random, mélangez la liste « lst_cards »
+# en copiant/collantle code ci-dessous :
+import random
 random.shuffle(lst_cards)
+# print("lst_cards : ", lst_cards)
 
-lst_cards_player = lst_cards[:26]
-lst_cards_computer = lst_cards[26:53]
+# EXERCICE 1 : 5. Affectez les 52 cartes en part égale dans les 2 listes respectives suivantes :
+# « lst_player_cards » et « lst_computer_cards »
+# lst_player_cards = lst_cards[:26]
+lst_player_cards = ['8\x05', 'As\x03', 'Roi\x03', 'Dame\x03', 'Valet\x03', '2\x03', '3\x03', '4\x03', '5\x03', '6\x03', '7\x03', '8\x03', '9\x03', '10\x03', 'As\x04', 'Roi\x04', 'Dame\x04', 'Valet\x04', '2\x04', '3\x04', '4\x04', '5\x04', '6\x04', '7\x04', '8\x04', '10\x06']
+# print(lst_player_cards)
+# lst_computer_cards = lst_cards[26:53]
+lst_computer_cards = ['Roi\x06', '9\x04', '10\x04', 'As\x05', 'Roi\x05', 'Dame\x05', 'Valet\x05', '2\x05', '3\x05', '4\x05', '5\x05', '6\x05', '7\x05', '9\x05', '10\x05', 'As\x06', 'Dame\x06', 'Valet\x06', '2\x06', '3\x06', '4\x06', '5\x06', '6\x06', '7\x06', '8\x06', '9\x06']
+# print("lst_computer_cards : ", lst_computer_cards)
 
-# Affichage de la main de départ du joueur et de l'ordinateur
-# print("Cartes joueur:", end=",")
-# for card in lst_cards_player:
-#     print(card, end=" ")
-# print("\nCartes ordinateur:", end=",")
-# for card in lst_cards_computer:
-#     print(card, end=" ")
-
-i = 0
-input_abandon = "n"
-# La partie continue tant que le joueur n'a pas décidé d'abandonner ou tant que l'ordinateur ou le joueur ne possède plus de carte
-while input_abandon == "n" and len(lst_cards_player) != 0 and  len(lst_cards_computer) != 0:
-    # Afficher la carte piochée par le joueur (nombre de cartes qu'il possède') /  la carte piochée par l'ordinateur (nombre de cartes qu'il possède')
-    print("\nJoueur :", lst_cards_player[i] + " (" + str(len(lst_cards_player)) + ")", end=" / ")
-    print("Ordinateur :", lst_cards_computer[i] + " (" + str(len(lst_cards_computer)) + ")")
+# EXERCICE 2 : 1. A l’aide d’une boucle judicieusement choisie, demandez au joueur s’il souhaite abandonner ou non,
+# il devra saisir 0 pour « Non » et 1 pour « Oui ».En cas d’abandon quittez la boucle.
+input_abandon = 0
+# EXERCICE 2 : 5. Gardez en stock la carte piochée par le joueur ainsi que celle piochée par l’ordinateur. Pour ce faire,
+# déclarez 2 listes : « lst_player_cards_playing » et « lst_computeur_cards_playing ». 
+lst_player_cards_playing = []
+lst_computer_cards_playing = []
+while input_abandon == 0 and (len(lst_player_cards) != 0 or  len(lst_computer_cards) != 0):
+    # EXERCICE 2 : 3. A l’intérieur de cette boucle et avant de posez la question au joueur s’il souhaite abandonner,
+    # affichez la carte piochée par le joueur ainsi que par l’ordinateur.
+    # Cette action revient à afficher la première valeur des listes respectives « lst_player_cards » et « lst_computer_cards »
+    # EXERCICE 2 : 4. Reprenez l’affichage de la question 3. et concaténez avec le nombre de cartes que possède le joueur et le nombre de cartes que possède l’ordinateur
+    print("\nJoueur :", lst_player_cards[0] + " (" + str(len(lst_player_cards)) + " cartes)", end=" / ")
+    print("Ordinateur :", lst_computer_cards[0] + " (" + str(len(lst_computer_cards)) + " cartes)")
     
-    card_player = lst_cards_player[i][:-1]
-    card_computer = lst_cards_computer[i][:-1]
+    # EXERCICE 2 : 5. Ajoutez la carte piochée par le joueur à la liste « lst_player_cards_playing »
+    # et la carte piochée par l’ordinateur à la liste  « lst_computer_cards_playing ».
+    lst_player_cards_playing.append(lst_player_cards[0])
+    print("lst_player_cards_playing : ", lst_player_cards_playing)
+    lst_computer_cards_playing.append(lst_computer_cards[0])
+    print("lst_computer_cards_playing : ", lst_computer_cards_playing)
 
-    if card_player == card_computer:
-        print("Egalité")
-        lst_cards_computer.append(lst_cards_computer[i])
-        lst_cards_player.append(lst_cards_player[i])
-    elif card_player == "As" or card_player == "Roi" or card_player == "Dame" or card_player == "Valet" :
-        if card_player == "As":
-            print("Gagné !")
-            lst_cards_player.append(lst_cards_computer[i])
-            lst_cards_player.append(lst_cards_player[i])
-        elif card_player == "Roi" and card_computer == "As" :
-            print("Perdu :(")
-            lst_cards_computer.append(lst_cards_computer[i])
-            lst_cards_computer.append(lst_cards_player[i])
-        elif card_player == "Dame" and (card_computer == "As" or card_computer == "Roi"):
-            print("Perdu :(")
-            lst_cards_computer.append(lst_cards_computer[i])
-            lst_cards_computer.append(lst_cards_player[i])
-        else:
-            print("Gagné !")
-            lst_cards_player.append(lst_cards_player[i])
-            lst_cards_player.append(lst_cards_computer[i])
+    # EXERCICE 2 : 6. Retirer les cartes piochées des listes « lst_player_cards » et « lst_computer_cards »
+    lst_player_cards.pop(0)
+    print("lst_player_cards : ", lst_player_cards)
+    lst_computer_cards.pop(0)
+    print("lst_computer_cards : ", lst_computer_cards)
+
+    # EXERCICE 3 : 1. Avant toute chose, pour contrôler quel est la vainqueur d’une manche
+    # et afin que la comparaison soit plus simple vous allez devoir retirer le caractère ASCII
+    # récupéré pour ne garder que la valeur de chacune des cartes piochées. Une fois le caractère retiré,
+    # stockez les valeurs retraitées dans les variables temporaires
+    # suivantes : « value_player_card » et « value_computer_card ».
+    # Intégrez ce retraitement avant de demander au joueur s’il souhaite abandonner la partie.
+    player_card = lst_player_cards_playing[-1]
+    value_player_card = player_card[:-1]
+    # print("value_player_card : ", value_player_card)
+    computer_card = lst_computer_cards_playing[-1]
+    value_computer_card = computer_card[:-1]
+    # print("value_computer_card : ", value_computer_card)
+
+    # EXERCICE 3 : 2. Afin de savoir qui remporte la manche, testez dans un premier temps à l’aide 
+    # d’une condition, si le valeur de la carte piochée par le joueur est égale à la valeur piochée
+    # par l’ordinateur et affichez « Bataille ! »
+    if value_player_card == value_computer_card:
+        print("Bataille !")
+        # EXERCICE 3 : 6. Gérez la bataille : lors d’une bataille le joueur et l’ordinateur vont devoir piocher
+        # une nouvelle carte sans la regarder et l’ajouter dans la liste des cartes en jeu.
+        # Pour ce faire, prenez la première valeur des listes « lst_player_cards » et « lst_computer_cards »
+        # pour les ajouter aux listes respectives « lst_player_cards_playing » et « lst_computer_cards_playing »
+        # puis supprimez ces valeurs des listes « lst_player_cards » et « lst_computer_cards »
+        lst_player_cards_playing.append(lst_player_cards[0])
+        lst_computer_cards_playing.append(lst_computer_cards[0])
+        lst_player_cards.pop(0)
+        lst_computer_cards.pop(0)
+
+    # EXERCICE 3 : 4. A l’aide du tableau de la question précédente,
+    # écrivez la suite du test conditionnel de la question afin savoir si le joueur a gagné
+    # et affichez « Manche remportée », dans le cas contraire affichez « Manche perdue ».
+    # Pour répondre à cette question différentes syntaxes sont possibles.
+    # Syntaxe 1
+    elif value_player_card == "As" or (value_player_card == "Roi" and value_computer_card != "As") or (value_player_card == "Dame" and value_computer_card != "As" and value_computer_card != "Roi") or (value_player_card == "Valet" and value_computer_card != "As" and value_computer_card != "Roi" and value_computer_card != "Dame") or value_player_card > value_computer_card:
+        print("Manche remportée")
+        # EXERCICE 3 : 5. Victoire du joueur : ajouter les valeurs des listes « lst_player_cards_playing » et « lst_computer_cards_playing »
+        # à la liste « lst_player_cards » et videz les listes « lst_player_cards_playing » et « lst_computer_cards_playing »
+        lst_player_cards = lst_player_cards + lst_player_cards_playing + lst_computer_cards_playing
+        # print(lst_player_cards)
+        lst_player_cards_playing = []
+        lst_computer_cards_playing = []
+    # Syntaxe 2
+    # elif value_player_card == "As":
+    #     print("Manche remportée")
+    # elif value_player_card == "Roi" and value_computer_card != "As":
+    #         print("Manche remportée")
+    # elif value_player_card == "Dame" and value_computer_card != "As" and value_computer_card != "Roi":
+    #     print("Manche remportée")
+    # elif value_player_card == "Valet" and value_computer_card != "As" and value_computer_card != "Roi" and value_computer_card != "Dame":
+    #     print("Manche remportée")
+    # elif value_player_card > value_computer_card:
+    #     print("Manche remportée")
     else:
-        if card_player > card_computer:
-            print("Gagné !")
-            lst_cards_player.append(lst_cards_player[i])
-            lst_cards_player.append(lst_cards_computer[i])
-        else:
-            print("Perdu :(")
-            lst_cards_computer.append(lst_cards_computer[i])
-            lst_cards_computer.append(lst_cards_player[i])
+        print("Manche perdue")
+        # EXERCICE 3 : 5. Défaite du joueur : ajouter les valeurs des listes « lst_player_cards_playing » et « lst_computer_cards_playing » à la liste « lst_computer_cards »
+        # et videz les listes « lst_player_cards_playing » et « lst_computer_cards_playing »
+        lst_computer_cards = lst_computer_cards + lst_player_cards_playing + lst_computer_cards_playing
+        # print("lst_computer_cards : ", lst_computer_cards)
+        lst_player_cards_playing = []
+        lst_computer_cards_playing = []
 
-    lst_cards_player.pop(i)
-    lst_cards_computer.pop(i)
+    input_abandon = int(input("Souhaitez-vous abandonner la partie (0:Non / 1:Oui) ? "))
 
-    # Affichage de la main du joueur et de l'ordinateur
-    print("Cartes joueur:", end=",")
-    for card in lst_cards_player:
-        print(card, end=" ")
-    print("\nCartes ordinateur:", end=",")
-    for card in lst_cards_computer:
-        print(card, end=" ")
-    print("\n")
-
-    input_abandon = input("Souhaitez-vous abandonner la partie (y:yes/n:no) ?")
-
-if len(lst_cards_player) == 0 or input_abandon == "y":
+# EXERCICE 4 : 1. Ecrivez un test qui affichera « Vous avez gagné la partie » ou « Vous avez perdu la partie » en fonction de conditions que vous aurez vous-même réfléchies.
+if len(lst_player_cards) == 0 or input_abandon == 1:
     print("Vous avez perdu la partie")
 else:
     print("Vous avez gagné la partie")
