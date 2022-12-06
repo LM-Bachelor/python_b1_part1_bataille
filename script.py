@@ -26,11 +26,9 @@ random.shuffle(lst_cards)
 
 # EXERCICE 1 : 5. Affectez les 52 cartes en part égale dans les 2 listes respectives suivantes :
 # « lst_player_cards » et « lst_computer_cards »
-# lst_player_cards = lst_cards[:26]
-lst_player_cards = ['8\x05', 'As\x03', 'Roi\x03', 'Dame\x03', 'Valet\x03', '2\x03', '3\x03', '4\x03', '5\x03', '6\x03', '7\x03', '8\x03', '9\x03', '10\x03', 'As\x04', 'Roi\x04', 'Dame\x04', 'Valet\x04', '2\x04', '3\x04', '4\x04', '5\x04', '6\x04', '7\x04', '8\x04', '10\x06']
+lst_player_cards = lst_cards[:26]
 # print(lst_player_cards)
-# lst_computer_cards = lst_cards[26:53]
-lst_computer_cards = ['Roi\x06', '9\x04', '10\x04', 'As\x05', 'Roi\x05', 'Dame\x05', 'Valet\x05', '2\x05', '3\x05', '4\x05', '5\x05', '6\x05', '7\x05', '9\x05', '10\x05', 'As\x06', 'Dame\x06', 'Valet\x06', '2\x06', '3\x06', '4\x06', '5\x06', '6\x06', '7\x06', '8\x06', '9\x06']
+lst_computer_cards = lst_cards[26:53]
 # print("lst_computer_cards : ", lst_computer_cards)
 
 # EXERCICE 2 : 1. A l’aide d’une boucle judicieusement choisie, demandez au joueur s’il souhaite abandonner ou non,
@@ -40,7 +38,7 @@ input_abandon = 0
 # déclarez 2 listes : « lst_player_cards_playing » et « lst_computeur_cards_playing ». 
 lst_player_cards_playing = []
 lst_computer_cards_playing = []
-while input_abandon == 0 and (len(lst_player_cards) != 0 or  len(lst_computer_cards) != 0):
+while input_abandon == 0 and (len(lst_player_cards) != 0 or len(lst_computer_cards) != 0):
     # EXERCICE 2 : 3. A l’intérieur de cette boucle et avant de posez la question au joueur s’il souhaite abandonner,
     # affichez la carte piochée par le joueur ainsi que par l’ordinateur.
     # Cette action revient à afficher la première valeur des listes respectives « lst_player_cards » et « lst_computer_cards »
@@ -51,15 +49,15 @@ while input_abandon == 0 and (len(lst_player_cards) != 0 or  len(lst_computer_ca
     # EXERCICE 2 : 5. Ajoutez la carte piochée par le joueur à la liste « lst_player_cards_playing »
     # et la carte piochée par l’ordinateur à la liste  « lst_computer_cards_playing ».
     lst_player_cards_playing.append(lst_player_cards[0])
-    print("lst_player_cards_playing : ", lst_player_cards_playing)
+    # print("lst_player_cards_playing : ", lst_player_cards_playing)
     lst_computer_cards_playing.append(lst_computer_cards[0])
-    print("lst_computer_cards_playing : ", lst_computer_cards_playing)
+    # print("lst_computer_cards_playing : ", lst_computer_cards_playing)
 
     # EXERCICE 2 : 6. Retirer les cartes piochées des listes « lst_player_cards » et « lst_computer_cards »
     lst_player_cards.pop(0)
-    print("lst_player_cards : ", lst_player_cards)
+    # print("lst_player_cards : ", lst_player_cards)
     lst_computer_cards.pop(0)
-    print("lst_computer_cards : ", lst_computer_cards)
+    # print("lst_computer_cards : ", lst_computer_cards)
 
     # EXERCICE 3 : 1. Avant toute chose, pour contrôler quel est la vainqueur d’une manche
     # et afin que la comparaison soit plus simple vous allez devoir retirer le caractère ASCII
