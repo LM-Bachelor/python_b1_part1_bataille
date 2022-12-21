@@ -91,6 +91,11 @@ while input_abandon == 0 and (len(lst_player_cards) != 0 or len(lst_computer_car
     # écrivez la suite du test conditionnel de la question afin savoir si le joueur a gagné
     # et affichez « Manche remportée », dans le cas contraire affichez « Manche perdue ».
     # Pour répondre à cette question différentes syntaxes sont possibles.
+    # CAS 1 : Le joueur a un AS
+    # CAS 2 : Le joueur a un Roi et l'ordinateur n'a pas d'AS
+    # CAS 3 : Le joueur a une Dame et l'ordinateur n'a pas d'As ni de Roi
+    # CAS 4 : Le joueur a un Valet et l'ordinateur n'a pas d'As ni de Roi, ni de Dame
+    # CAS 5 : La carte du joueur est plus forte que la carte de l'ordinateur
     # Syntaxe 1
     elif value_player_card == "As" or (value_player_card == "Roi" and value_computer_card != "As") or (value_player_card == "Dame" and value_computer_card != "As" and value_computer_card != "Roi") or (value_player_card == "Valet" and value_computer_card != "As" and value_computer_card != "Roi" and value_computer_card != "Dame") or value_player_card > value_computer_card:
         print("Manche remportée")
