@@ -38,7 +38,7 @@ input_abandon = 0
 # déclarez 2 listes : « lst_player_cards_playing » et « lst_computeur_cards_playing ». 
 lst_player_cards_playing = []
 lst_computer_cards_playing = []
-while input_abandon == 0 and (len(lst_player_cards) != 0 or len(lst_computer_cards) != 0):
+while input_abandon == 0 and len(lst_player_cards) != 0 and len(lst_computer_cards) != 0:
     # EXERCICE 2 : 3. A l’intérieur de cette boucle et avant de posez la question au joueur s’il souhaite abandonner,
     # affichez la carte piochée par le joueur ainsi que par l’ordinateur.
     # Cette action revient à afficher la première valeur des listes respectives « lst_player_cards » et « lst_computer_cards »
